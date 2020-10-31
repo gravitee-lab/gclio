@@ -28,15 +28,15 @@ jobs:
           name: "Run Tests"
           command: |
                     npm i
-                    npm test
+                    npm run test
       - run: # print the name of the branch we're on
           name: "Build package"
           command: |
-                    npm build
+                    npm run build
       - run: # print the name of the branch we're on
           name: "Publish to NPM Registry"
           command: |
-                    npm build
+                    npm run build
                     export LOCAL_SECRET_FILE=${HOME}/.npmrc
                     secrethub read --out-file "${LOCAL_SECRET_FILE}" "${SECRETHUB_ORG}/${SECRETHUB_REPO}/meta/gclio/npm-registries/npmjs.org/npmrc"
                     npm publish
