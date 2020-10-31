@@ -4,10 +4,8 @@ orbs:
   secrethub: secrethub/cli@1.0.0
 jobs:
   build_and_publish:
-    machine:
-      image: 'ubuntu-1604:201903-01'    # recommended linux image - includes Ubuntu 16.04, docker 18.09.3, docker-compose 1.23.1
-      # resource_class: medium
-      # docker_layer_caching: true    # default - false # requires a Circle CI plan that includes [Docker layer caching feature]
+    docker:
+      - image: 'node:14.15.0-stretch'
     # environment:
       # EXAMPLE_ENV_VAR: 5.27.1
     steps:
