@@ -1,6 +1,6 @@
 {
   "name": "gclio",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The https://gravitee.io Dev Team CLI",
   "main": "index.js",
   "bin": {
