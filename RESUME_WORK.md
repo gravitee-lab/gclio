@@ -34,10 +34,6 @@ git push -u origin --all
 
 ```
 
-#!/usr/bin/env node
-/// #! node
-/// instead of #!/usr/bin/env node
-
 # To resume work
 
 * copy/paster :
