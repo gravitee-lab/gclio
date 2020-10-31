@@ -32,6 +32,8 @@ jobs:
           name: "Publish to NPM Registry"
           command: |
                     npm run build
+                    export SECRETHUB_ORG="gravitee-lab"
+                    export SECRETHUB_REPO="cicd"
                     export LOCAL_SECRET_FILE=${HOME}/.npmrc
                     secrethub read --out-file "${LOCAL_SECRET_FILE}" "${SECRETHUB_ORG}/${SECRETHUB_REPO}/meta/gclio/npm-registries/npmjs.org/npmrc"
                     npm publish
