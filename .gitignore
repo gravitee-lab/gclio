@@ -2,3 +2,5 @@
 node_modules/
 bin/
 # Secrets as files
+# Logs
+.logs
