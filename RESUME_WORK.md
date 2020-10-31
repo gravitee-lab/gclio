@@ -63,9 +63,11 @@ export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): adding basic source code structu
 export FEATURE_ALIAS="circleci_pipeline"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): adding circle ci pipeline with npm publish #2"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): completed documentation of circle ci pipeline #2"
+export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): completed documentation of circle ci pipeline #2"
 # git flow feature start ${FEATURE_ALIAS}
 # git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u origin HEAD
 
+# git push -u origin --all && git push -u origin --tags
 
 atom .
 
