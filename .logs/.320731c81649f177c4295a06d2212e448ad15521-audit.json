@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": ".logs/.320731c81649f177c4295a06d2212e448ad15521-audit.json",
+    "files": [
+        {
+            "date": 1604133975194,
+            "name": ".logs/gclio-2020-10-31-09.logs",
+            "hash": "daca70ba265dd61ce26ba62bd3047b72"
+        }
+    ]
+}
