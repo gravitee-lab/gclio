@@ -1,0 +1,4 @@
+# node / typescript build cycle
+node_modules/
+bin/
+# Secrets as files
