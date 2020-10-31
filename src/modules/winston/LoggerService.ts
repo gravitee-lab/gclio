@@ -11,7 +11,7 @@ export class LoggerService {
     ),
     transports: [
       new winston.transports.File({filename: `${process.env.GCLIO_RUNTIME_FOLDER}/.logs/gclio.logs`}),
-      new winston.transports.Console(),
+      /// new winston.transports.Console(),
       new winston.transports.DailyRotateFile({
         filename: `${process.env.GCLIO_RUNTIME_FOLDER}/.logs/gclio-%DATE%.logs`,
         datePattern: 'YYYY-MM-DD-HH',
