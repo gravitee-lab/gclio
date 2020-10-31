@@ -64,6 +64,9 @@ export FEATURE_ALIAS="circleci_pipeline"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): adding circle ci pipeline with npm publish #2"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): completed documentation of circle ci pipeline #2"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): completed documentation of circle ci pipeline #2"
+export FEATURE_ALIAS="first-features"
+export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): implementing first features implementation as of #1"
+
 # git flow feature start ${FEATURE_ALIAS}
 # git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u origin HEAD
 
