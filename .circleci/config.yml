@@ -45,7 +45,7 @@ workflows:
   version: 2.1
   build_and_publish:
     jobs:
-      - docker_build_and_push:
+      - build_and_publish:
           context: cicd-gclio
           filters:
             branches:
