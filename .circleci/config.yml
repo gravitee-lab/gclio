@@ -1,0 +1,65 @@
+# Machine executor, set the machine key to true in .circleci/config.yml:
+version: 2.1
+orbs:
+  secrethub: secrethub/cli@1.0.0
+jobs:
+  build_and_publish:
+    machine:
+      image: 'ubuntu-1604:201903-01'    # recommended linux image - includes Ubuntu 16.04, docker 18.09.3, docker-compose 1.23.1
+      # resource_class: medium
+      # docker_layer_caching: true    # default - false # requires a Circle CI plan that includes [Docker layer caching feature]
+    # environment:
+      # EXAMPLE_ENV_VAR: 5.27.1
+    steps:
+      - checkout
+      - secrethub/install
+      - run:
+          name: "Checking local docker installation"
+          command: docker version
+      - run:
+          name: "Checking git cloned files"
+          command: |
+                    git status
+                    ls -allh .
+      - run: # print the name of the branch we're on
+          name: "What branch am I on ?"
+          command: echo ${CIRCLE_BRANCH}
+      - run:
+          name: "Run Tests"
+          command: |
+                    npm i
+                    npm test
+      - run: # print the name of the branch we're on
+          name: "Build package"
+          command: |
+                    npm build
+      - run: # print the name of the branch we're on
+          name: "Publish to NPM Registry"
+          command: |
+                    npm build
+                    export LOCAL_SECRET_FILE=${HOME}/.npmrc
+                    secrethub read --out-file "${LOCAL_SECRET_FILE}" "${SECRETHUB_ORG}/${SECRETHUB_REPO}/meta/gclio/npm-registries/npmjs.org/npmrc"
+                    npm publish
+
+workflows:
+  version: 2.1
+  build_and_publish:
+    jobs:
+      - build_and_publish:
+          context: cicd-gclio
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop
+                - /^feature\/*/
+                - /^support\/*/
+                - /^bugfix\/*/
+                - /^hotfix\/*/
+                - /^release\/*/
+            tags:
+              # only: /^v.*/
+              only:
+                - /^[0-999].[0-999].[0-999]/
+                - /^[0-999].[0-999].[0-999]-alpha/
+                - /^[0-999].[0-999].[0-999]-beta/
