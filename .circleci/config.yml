@@ -12,9 +12,6 @@ jobs:
       - checkout
       - secrethub/install
       - run:
-          name: "Checking local docker installation"
-          command: docker version
-      - run:
           name: "Checking git cloned files"
           command: |
                     git status
