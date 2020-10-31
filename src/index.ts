@@ -35,25 +35,27 @@ import * as rxjs from 'rxjs';
 import "./lib/env";
 import "./lib/errors";
 import { Cli } from './modules/cli/Cli';
+import { LoggerService } from './modules/winston/LoggerService';
+import * as appRoot from 'app-root-path';
+
+
+process.env.GCLIO_RUNTIME_FOLDER = appRoot.path;
 
 
 /// Welcome
-console.log('')
-console.log('+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x')
-console.log('            Gravitee Dev Team CLI ')
-console.log('+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x+x')
-console.log('')
+LoggerService.writeInfoLog(`GCLIO_RUNTIME_FOLDER = [${process.env.GCLIO_RUNTIME_FOLDER}]`)
+
 
 /// throw new Error("DEBUG STOP POINT")
 
 export const cli : Cli = new Cli();
 
-console.log(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'gio' : ${cli.gnuOptions.argv["gio"]}`);
-console.log(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'api-home' : ${cli.gnuOptions.argv["api-home"]}`);
-console.log(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'gw-home' : ${cli.gnuOptions.argv["gw-home"]}`);
+LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'gio' : ${cli.gnuOptions.argv["gio"]}`);
+LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'api-home' : ${cli.gnuOptions.argv["api-home"]}`);
+LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'gw-home' : ${cli.gnuOptions.argv["gw-home"]}`);
 
 process.argv = cli.gnuOptions.argv;
 
-console.log(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gio' : ${process.argv["gio"]}`);
-console.log(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'api-home' : ${process.argv["api-home"]}`);
-console.log(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gw-home' : ${process.argv["gw-home"]}`);
+LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gio' : ${process.argv["gio"]}`);
+LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'api-home' : ${process.argv["api-home"]}`);
+LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gw-home' : ${process.argv["gw-home"]}`);

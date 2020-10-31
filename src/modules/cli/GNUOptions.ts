@@ -43,9 +43,9 @@ export class GNUOptions {
 
 
     this.argv = yargsLib.options({
-      'gio-version': { type: 'string', demandOption: true, default: true, desc: `${gio_option_desc}`, alias: 'gio' },
-      'api-home': { type: 'string', demandOption: true, default: 'true', desc: `${api_home_option_desc}`, alias: 'api' },
-      'gw-home': { type: 'string', demandOption: true, default: 'true', desc: `${gw_home_option_desc}`, alias: 'gw' }
+      'gio-version': { type: 'string', demandOption: true, default: `${process.env.GIO_VERSION}`, desc: `${gio_option_desc}`, alias: 'gio' },
+      'api-home': { type: 'string', demandOption: true, default: `${process.env.API_HOME}`, desc: `${api_home_option_desc}`, alias: 'api' },
+      'gw-home': { type: 'string', demandOption: true, default: `${process.env.GW_HOME}`, desc: `${gw_home_option_desc}`, alias: 'gw' }
       /// 'example-enum-option': { choices: ['mvn_release', 'release_bundle', 'docker_release', 'rpm_release', 'doc_release', 'demos_release', 'social_announcements', 'pull_req'], demandOption: true, desc: `Use this option to ... ${gio_option_desc}`, alias: 's' },  /// 'pr-bot': { type: 'boolean', default: false, desc: "\n\n" +"Use this option to ...", alias: 'pr' }
       /*,
       b: { type: 'string', demandOption: true },
