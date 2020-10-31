@@ -1,12 +1,11 @@
 # `gclio` The Gravitee Dev Team CLI
 
 
-* install :
+* Install :
+
 ```bash
 # --- #
-npm i
-npm run build
-sudo npm i -g ./
+sudo npm install -g gclio
 gclio --version
 gclio --help
 
@@ -16,8 +15,7 @@ gclio --help
 
 ```bash
 # --- #
-sudo npm uninstall -g ./
-sudo npm unlink
+sudo npm uninstall -g gclio
 gclio --version
 
 ```
@@ -33,4 +31,18 @@ gclio --version
 # --- #
 npm i
 npm run build
+sudo npm i -g ./
+gclio --version
+gclio --help
+
+```
+* clean up :
+
+```bash
+# --- #
+sudo npm uninstall -g ./
+sudo npm unlink
+rm -fr ./bin
+gclio --version
+
 ```
