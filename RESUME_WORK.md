@@ -65,6 +65,10 @@ export FEATURE_ALIAS="src_code_init"
 export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): adding basic source code structure for a typescript CLI #1"
 # git add --all && git commit -m "${COMMIT_MESSAGE}" && git push -u origin HEAD
 
+export FEATURE_ALIAS="circleci_pipeline"
+export COMMIT_MESSAGE="feat.(${FEATURE_ALIAS}): adding circle ci pipeline with npm publish #2"
+git flow feature start ${FEATURE_ALIAS}
+
 atom .
 
 ```
