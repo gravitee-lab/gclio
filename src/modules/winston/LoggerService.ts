@@ -1,4 +1,5 @@
 import * as winston from 'winston';
+import * as logform from 'logform'; /// Note very important : no need to [nom i --save logform] logform package is brought in with winston,
 import 'winston-daily-rotate-file';
 
 export class LoggerService {
@@ -9,10 +10,23 @@ export class LoggerService {
       winston.format.label({
         label: 'important-data'
       }),
+      logform.format.errors({stack: true}),
+      winston.format.metadata(),
       winston.format.json(),
+
       // winston.format.colorize(),
       // winston.format.prettyPrint(), // this one makes the JSon format like with [jq .]
     ),
+    exitOnError: true, /// related to execeptionHandler
+    exceptionHandlers: [ /// because when an Uncaught Exeception is thrown, then....
+      new winston.transports.DailyRotateFile({ /// error logs, all the time
+        filename: `./.logs/gclio-%DATE%.fatal-error.logs`,
+        datePattern: 'YYYY-MM-DD-HH',
+        zippedArchive: true,
+        maxSize: '20m',
+        level: 'error'
+      })
+    ],
     //winston.format.colorize(),
     //winston.format.prettyPrint() // this one makes the JSon format like with [jq .]
     transports: [
@@ -20,6 +34,7 @@ export class LoggerService {
         filename: `${process.cwd()}/.logs/gclio.logs`,
         level: process.env.LOG_LEVEL
       }),*/
+
       new winston.transports.DailyRotateFile({ /// error logs, all the time
         filename: `./.logs/gclio-%DATE%.error.logs`,
         datePattern: 'YYYY-MM-DD-HH',
@@ -62,7 +77,7 @@ export class LoggerService {
     ],
 
   })
-  static writeErrorLog(msg) {
+  static writeErrorLog(msg: string) {
 
       this.myLogger.log({
           level: 'error',
@@ -70,21 +85,28 @@ export class LoggerService {
           message: msg,
       })
   }
-  static writeInfoLog(msg) {
+  static writeNativeErrorLog(error: Error) {
+      this.myLogger.error({
+          message: error,
+      })
+
+  }
+
+  static writeInfoLog(msg: string) {
       this.myLogger.log({
           level: 'info',
           // timeStamp: new Date().toLocaleString(),
           message: msg
       })
   }
-  static writeDebugLog(msg) {
+  static writeDebugLog(msg: string) {
       this.myLogger.log({
           level: 'debug',
           // timeStamp: new Date().toLocaleString(),
           message: msg,
       })
   }
-  static writeWarnLog(msg) {
+  static writeWarnLog(msg: string) {
       this.myLogger.log({
           level: 'warn',
           // timeStamp: new Date().toLocaleString(),

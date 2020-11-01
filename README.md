@@ -22,7 +22,7 @@ gclio --version
 * run with log level :
 
 ```bash
-# possible log levels are the exact same than npm log levels
+# possible log levels are the exact same than npm log levels.
 export LOG_LEVEL=debug
 gclio
 

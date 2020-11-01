@@ -39,8 +39,14 @@ import { LoggerService } from './modules/winston/LoggerService';
 
 
 /// throw new Error("DEBUG STOP POINT")
+let initCli : Cli;
+try {
+  initCli = new Cli();
+} catch (error) {
+  LoggerService.writeNativeErrorLog(error);
+}
+export const cli : Cli = initCli;
 
-export const cli : Cli = new Cli();
 /// Welcome
 LoggerService.writeInfoLog('Exemple gclio de logs')
 
@@ -53,3 +59,7 @@ process.argv = cli.gnuOptions.argv;
 LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gio' : ${process.argv["gio"]}`);
 LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'api-home' : ${process.argv["api-home"]}`);
 LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gw-home' : ${process.argv["gw-home"]}`);
+
+LoggerService.writeErrorLog(`Un exemple d'erreur logguée`);
+
+LoggerService.writeNativeErrorLog(new Error(" Error which should be logged by winston and formatted by logform"));
