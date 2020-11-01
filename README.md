@@ -10,7 +10,6 @@ gclio --version
 gclio --help
 
 ```
-
 * uninstall :
 
 ```bash
@@ -20,6 +19,14 @@ gclio --version
 
 ```
 
+* run with log level :
+
+```bash
+
+export LOG_LEVEL=debug
+gclio
+
+```
 
 
 

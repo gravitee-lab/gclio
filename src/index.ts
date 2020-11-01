@@ -36,19 +36,13 @@ import "./lib/env";
 import "./lib/errors";
 import { Cli } from './modules/cli/Cli';
 import { LoggerService } from './modules/winston/LoggerService';
-import * as appRoot from 'app-root-path';
-
-
-process.env.GCLIO_RUNTIME_FOLDER = appRoot.path;
-
-
-/// Welcome
-LoggerService.writeInfoLog(`GCLIO_RUNTIME_FOLDER = [${process.env.GCLIO_RUNTIME_FOLDER}]`)
 
 
 /// throw new Error("DEBUG STOP POINT")
 
 export const cli : Cli = new Cli();
+/// Welcome
+LoggerService.writeInfoLog('Exemple gclio de logs')
 
 LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'gio' : ${cli.gnuOptions.argv["gio"]}`);
 LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'api-home' : ${cli.gnuOptions.argv["api-home"]}`);

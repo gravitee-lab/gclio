@@ -1,4 +1,3 @@
-
 /**
  * DOTENV Configuration Loader Module
  *
@@ -14,8 +13,9 @@ class ErrorReporter {
   // Use this option to specify the path of the Gravitee Gateway Classpath.
   // ~/.gclio/home/gateway
   private gw_home: string
+  private log_level: string
 
-  constructor(gio_version: string, api_home: string, gw_home: string) {
+  constructor(gio_version: string, api_home: string, gw_home: string, log_level: string) {
 
     // console.debug("{[.DOTENV]} - validating [GIO_VERSION] ")
     if (gio_version === undefined || gio_version === "") {
@@ -41,6 +41,14 @@ class ErrorReporter {
     this.api_home = api_home;
     this.gw_home = gw_home;
 
+    if (log_level === undefined || gw_home === "") {
+      // console.debug("{[.DOTENV]} - validating [GW_HOME] an error should be thrown")
+      // throw new Error("{[.DOTENV]} - [LOG_LEVEL] is undefined, or an empty string, but is required. Value should be set to the path of the folder you want for the Gravitee Gateway Runtime on your local machine. This path will be added to the Java Classpath in your Dev environment.")
+      this.log_level = 'info'
+    } else {
+      // console.debug("{[.DOTENV]} - validating [GW_HOME] NO error should be thrown")
+      this.log_level = log_level
+    }
   }
 
   report(err: Error) {
@@ -50,4 +58,4 @@ class ErrorReporter {
   }
 }
 
-export default new ErrorReporter(process.env.GIO_VERSION, process.env.API_HOME, process.env.GW_HOME);
+export default new ErrorReporter(process.env.GIO_VERSION, process.env.API_HOME, process.env.GW_HOME, process.env.LOG_LEVEL);

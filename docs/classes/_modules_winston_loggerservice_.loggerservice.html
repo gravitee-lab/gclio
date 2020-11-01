@@ -113,6 +113,10 @@
 						<a href="../modules/_modules_cli_gnuoptions_.html">&quot;modules/cli/GNUOptions&quot;</a>
 						</li>                        <li class="current tsd-kind-module">
 						<a href="../modules/_modules_winston_loggerservice_.html">&quot;modules/winston/<wbr>Logger<wbr>Service&quot;</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/_modules_winston_logginglevels_.html">&quot;modules/winston/<wbr>Logging<wbr>Levels&quot;</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="../modules/_modules_winston_logginglevelsenum_.html">&quot;modules/winston/<wbr>Logging<wbr>Levels<wbr>Enum&quot;</a>
 				</li>                </ul>
 			</nav>
 		</div>
@@ -177,10 +181,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static tsd-descriptions">
 					<a name="mylogger" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> my<wbr>Logger</h3>
-					<div class="tsd-signature tsd-kind-icon">myLogger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> = winston.createLogger({format: winston.format.combine(// winston.format.colorize(),winston.format.json(),// winston.format.prettyPrint() // this one makes the JSon format like with [jq .]),transports: [new winston.transports.File({filename: &#x60;${process.env.GCLIO_RUNTIME_FOLDER}/.logs/gclio.logs&#x60;}),new winston.transports.Console(),new winston.transports.DailyRotateFile({filename: &#x60;${process.env.GCLIO_RUNTIME_FOLDER}/.logs/gclio-%DATE%.logs&#x60;,datePattern: &#x27;YYYY-MM-DD-HH&#x27;,zippedArchive: true,maxSize: &#x27;20m&#x27;,maxFiles: &#x27;14d&#x27;}).on(&#x27;rotate&#x27;, function(oldFilename, newFilename) {// and there I do anything when log file rotation happens !!})],/*transport.on(&#x27;rotate&#x27;, function(oldFilename, newFilename) {// do something fun});*/})</span></div>
+					<div class="tsd-signature tsd-kind-icon">myLogger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> = winston.createLogger({format: winston.format.combine(winston.format.timestamp(),winston.format.label({label: &#x27;important-data&#x27;}),winston.format.json(),// winston.format.colorize(),// winston.format.prettyPrint(), // this one makes the JSon format like with [jq .]),//winston.format.colorize(),//winston.format.prettyPrint() // this one makes the JSon format like with [jq .]transports: [/*new winston.transports.File({filename: &#x60;${process.cwd()}/.logs/gclio.logs&#x60;,level: process.env.LOG_LEVEL}),*/new winston.transports.DailyRotateFile({ /// error logs, all the timefilename: &#x60;./.logs/gclio-%DATE%.error.logs&#x60;,datePattern: &#x27;YYYY-MM-DD-HH&#x27;,zippedArchive: true,maxSize: &#x27;20m&#x27;,level: &#x27;error&#x27;}).on(&#x27;rotate&#x27;, function(oldFilename, newFilename) {// do something when log rotation happens}),new winston.transports.DailyRotateFile({ /// warn logs, all the timefilename: &#x60;./.logs/gclio-%DATE%.warn.logs&#x60;,datePattern: &#x27;YYYY-MM-DD-HH&#x27;,zippedArchive: true,maxSize: &#x27;20m&#x27;,level: &#x27;warn&#x27;}).on(&#x27;rotate&#x27;, function(oldFilename, newFilename) {// do something when log rotation happens}),new winston.transports.DailyRotateFile({ /// absolutely all logs, all the time (most verbose)filename: &#x60;./.logs/gclio-%DATE%.silly.logs&#x60;,datePattern: &#x27;YYYY-MM-DD-HH&#x27;,zippedArchive: true,maxSize: &#x27;20m&#x27;,level: &#x27;silly&#x27;}).on(&#x27;rotate&#x27;, function(oldFilename, newFilename) {// do something when log rotation happens}),new winston.transports.DailyRotateFile({ /// environment defined (log level) logsfilename: &#x60;./.logs/gclio-%DATE%.logs&#x60;,datePattern: &#x27;YYYY-MM-DD-HH&#x27;,zippedArchive: true,maxSize: &#x27;20m&#x27;,level: process.env.LOG_LEVEL}).on(&#x27;rotate&#x27;, function(oldFilename, newFilename) {// do something when log rotation happens}),new winston.transports.Console({level: process.env.LOG_LEVEL})],})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/fcafbcc/src/modules/winston/LoggerService.ts#L6">modules/winston/LoggerService.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/e2687fd/src/modules/winston/LoggerService.ts#L6">modules/winston/LoggerService.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +207,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/fcafbcc/src/modules/winston/LoggerService.ts#L43">modules/winston/LoggerService.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/e2687fd/src/modules/winston/LoggerService.ts#L80">modules/winston/LoggerService.ts:80</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -223,7 +227,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/fcafbcc/src/modules/winston/LoggerService.ts#L30">modules/winston/LoggerService.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/e2687fd/src/modules/winston/LoggerService.ts#L65">modules/winston/LoggerService.ts:65</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -243,7 +247,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/fcafbcc/src/modules/winston/LoggerService.ts#L37">modules/winston/LoggerService.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/e2687fd/src/modules/winston/LoggerService.ts#L73">modules/winston/LoggerService.ts:73</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -263,7 +267,7 @@
 					</ul>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/fcafbcc/src/modules/winston/LoggerService.ts#L49">modules/winston/LoggerService.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/gravitee-lab/gclio/blob/e2687fd/src/modules/winston/LoggerService.ts#L87">modules/winston/LoggerService.ts:87</a></li>
 						</ul>
 					</aside>
 				</section>

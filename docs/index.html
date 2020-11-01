@@ -79,6 +79,10 @@
 						<a href="modules/_modules_cli_gnuoptions_.html">&quot;modules/cli/GNUOptions&quot;</a>
 						</li>                        <li class=" tsd-kind-module">
 						<a href="modules/_modules_winston_loggerservice_.html">&quot;modules/winston/<wbr>Logger<wbr>Service&quot;</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="modules/_modules_winston_logginglevels_.html">&quot;modules/winston/<wbr>Logging<wbr>Levels&quot;</a>
+						</li>                        <li class=" tsd-kind-module">
+						<a href="modules/_modules_winston_logginglevelsenum_.html">&quot;modules/winston/<wbr>Logging<wbr>Levels<wbr>Enum&quot;</a>
 				</li>                </ul>
 			</nav>
 		</div>
@@ -88,23 +92,19 @@
 					<h1><code>gclio</code> The Gravitee Dev Team CLI</h1>
 				</a>
 				<ul>
-					<li>install :<pre><code class="language-bash"><span class="hljs-comment"># --- #</span>
-npm i
-npm run build
-sudo npm i -g ./
+					<li>Install :</li>
+				</ul>
+				<pre><code class="language-bash"><span class="hljs-comment"># --- #</span>
+sudo npm install -g gclio
 gclio --version
 gclio --<span class="hljs-built_in">help</span>
 </code></pre>
-					</li>
+				<ul>
+					<li>uninstall :</li>
 				</ul>
-				<pre><code>
-<span class="hljs-meta">*</span> <span class="hljs-string">uninstall :</span>
-
-<span class="hljs-attr">```bash</span>
-<span class="hljs-comment"># --- #</span>
-<span class="hljs-attr">sudo</span> <span class="hljs-string">npm uninstall -g ./</span>
-<span class="hljs-attr">sudo</span> <span class="hljs-string">npm unlink</span>
-<span class="hljs-attr">gclio</span> <span class="hljs-string">--version</span>
+				<pre><code class="language-bash"><span class="hljs-comment"># --- #</span>
+sudo npm uninstall -g gclio
+gclio --version
 </code></pre>
 				<a href="#build-from-source" id="build-from-source" style="color: inherit; text-decoration: none;">
 					<h2>Build from source</h2>
@@ -114,7 +114,20 @@ gclio --<span class="hljs-built_in">help</span>
 				</ul>
 				<pre><code class="language-bash"><span class="hljs-comment"># --- #</span>
 npm i
-npm run build</code></pre>
+npm run build
+sudo npm i -g ./
+gclio --version
+gclio --<span class="hljs-built_in">help</span>
+</code></pre>
+				<ul>
+					<li>clean up :</li>
+				</ul>
+				<pre><code class="language-bash"><span class="hljs-comment"># --- #</span>
+sudo npm uninstall -g ./
+sudo npm unlink
+rm -fr ./bin
+gclio --version
+</code></pre>
 			</div>
 			<footer class="with-border-bottom">
 				<div class="tsd-legend-group">
