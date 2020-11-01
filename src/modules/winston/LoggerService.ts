@@ -10,22 +10,22 @@ export class LoggerService {
       winston.format.label({
         label: 'important-data'
       }),
-      logform.format.errors({stack: true}),
+      logform.format.errors({stack: true}), /// this adds a stack json propertty to the log, when an error is logged
       winston.format.metadata(),
       winston.format.json(),
 
       // winston.format.colorize(),
       // winston.format.prettyPrint(), // this one makes the JSon format like with [jq .]
     ),
-    exitOnError: true, /// related to execeptionHandler
-    exceptionHandlers: [ /// because when an Uncaught Exeception is thrown, then....
+    exitOnError: false, /// the execeptionHandler will anyway, exit
+    exceptionHandlers: [ /// will catch and log Uncaught Execeptions, and also exit process.
       new winston.transports.DailyRotateFile({ /// error logs, all the time
         filename: `./.logs/gclio-%DATE%.fatal-error.logs`,
         datePattern: 'YYYY-MM-DD-HH',
         zippedArchive: true,
         maxSize: '20m',
         /// level: 'error',
-        handleExceptions: true
+        ///handleExceptions: true
       })
     ],
     //winston.format.colorize(),
@@ -36,7 +36,7 @@ export class LoggerService {
         level: process.env.LOG_LEVEL
       }),*/
 
-      /*new winston.transports.DailyRotateFile({ /// error logs, all the time
+      new winston.transports.DailyRotateFile({ /// error logs, all the time
         filename: `./.logs/gclio-%DATE%.error.logs`,
         datePattern: 'YYYY-MM-DD-HH',
         zippedArchive: true,
@@ -44,7 +44,7 @@ export class LoggerService {
         level: 'error'
       }).on('rotate', function(oldFilename, newFilename) {
           // do something when log rotation happens
-      }),*/
+      }),
       new winston.transports.DailyRotateFile({ /// warn logs, all the time
         filename: `./.logs/gclio-%DATE%.warn.logs`,
         datePattern: 'YYYY-MM-DD-HH',
@@ -91,6 +91,12 @@ export class LoggerService {
           message: error,
       })
 
+      this.myLogger.on('finish', function (error) {
+          // All `error` log messages has now been logged
+          //process.disconnect();
+          process.exit(1);
+
+      });
   }
 
   static writeInfoLog(msg: string) {

@@ -62,4 +62,6 @@ LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l
 
 LoggerService.writeErrorLog(`Un exemple d'erreur logguée`);
 
-LoggerService.writeNativeErrorLog(new Error(" Error which should be logged by winston and formatted by logform"));
+let testerror = new Error(" Error which should be logged by winston and formatted by logform");
+LoggerService.writeNativeErrorLog(testerror);
+throw testerror;

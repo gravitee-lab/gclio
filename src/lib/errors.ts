@@ -73,7 +73,8 @@ try {
 } catch (error) {
   LoggerService.writeNativeErrorLog(error);
   // log this one error, and
-  // throwing it back, so that it actually stops the execution
+  // throwing it back, so that it actually stops the execution (and
+  // it will be caught again, by the Winston Logger's exceptionHandler)
   throw error;
 
   /// process.exit(1)
