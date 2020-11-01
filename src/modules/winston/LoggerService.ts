@@ -18,15 +18,16 @@ export class LoggerService {
       // winston.format.prettyPrint(), // this one makes the JSon format like with [jq .]
     ),
     exitOnError: false, /// the execeptionHandler will anyway, exit
-    exceptionHandlers: [ /// will catch and log Uncaught Execeptionsn BUT TO CONSOLE, NOT TO SPECIFED FILE (I don't know why), and exit process.
-      new winston.transports.DailyRotateFile({ /// error logs, all the time
+    exceptionHandlers: [ /// will catch and log Uncaught Execeptions , and exit process.
+      /* new winston.transports.DailyRotateFile({ /// LOGS TO CONSOLE, NOT TO SPECIFED FILE (I don't know why)/// AND I Do NOT WANT AN EMPTY LOG FILE FOR ELK
         filename: `./.logs/gclio-%DATE%.fatal-error.logs`,
         datePattern: 'YYYY-MM-DD-HH',
         zippedArchive: true,
         maxSize: '20m',
         /// level: 'error',
-        ///handleExceptions: true
-      })
+        handleExceptions: true
+      }),*/
+      new winston.transports.Console()
     ],
     //winston.format.colorize(),
     //winston.format.prettyPrint() // this one makes the JSon format like with [jq .]
