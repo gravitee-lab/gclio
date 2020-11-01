@@ -24,7 +24,8 @@ export class LoggerService {
         datePattern: 'YYYY-MM-DD-HH',
         zippedArchive: true,
         maxSize: '20m',
-        level: 'error'
+        /// level: 'error',
+        handleExceptions: true
       })
     ],
     //winston.format.colorize(),
@@ -35,7 +36,7 @@ export class LoggerService {
         level: process.env.LOG_LEVEL
       }),*/
 
-      new winston.transports.DailyRotateFile({ /// error logs, all the time
+      /*new winston.transports.DailyRotateFile({ /// error logs, all the time
         filename: `./.logs/gclio-%DATE%.error.logs`,
         datePattern: 'YYYY-MM-DD-HH',
         zippedArchive: true,
@@ -43,7 +44,7 @@ export class LoggerService {
         level: 'error'
       }).on('rotate', function(oldFilename, newFilename) {
           // do something when log rotation happens
-      }),
+      }),*/
       new winston.transports.DailyRotateFile({ /// warn logs, all the time
         filename: `./.logs/gclio-%DATE%.warn.logs`,
         datePattern: 'YYYY-MM-DD-HH',
