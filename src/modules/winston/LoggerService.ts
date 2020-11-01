@@ -18,7 +18,7 @@ export class LoggerService {
       // winston.format.prettyPrint(), // this one makes the JSon format like with [jq .]
     ),
     exitOnError: false, /// the execeptionHandler will anyway, exit
-    exceptionHandlers: [ /// will catch and log Uncaught Execeptions, and also exit process.
+    exceptionHandlers: [ /// will catch and log Uncaught Execeptionsn BUT TO CONSOLE, NOT TO SPECIFED FILE (I don't know why), and exit process.
       new winston.transports.DailyRotateFile({ /// error logs, all the time
         filename: `./.logs/gclio-%DATE%.fatal-error.logs`,
         datePattern: 'YYYY-MM-DD-HH',
