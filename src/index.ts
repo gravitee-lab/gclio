@@ -36,19 +36,19 @@ import "./lib/env";
 import "./lib/errors";
 import { Cli } from './modules/cli/Cli';
 import { LoggerService } from './modules/winston/LoggerService';
-import * as appRoot from 'app-root-path';
-
-
-process.env.GCLIO_RUNTIME_FOLDER = appRoot.path;
-
-
-/// Welcome
-LoggerService.writeInfoLog(`GCLIO_RUNTIME_FOLDER = [${process.env.GCLIO_RUNTIME_FOLDER}]`)
 
 
 /// throw new Error("DEBUG STOP POINT")
+let initCli : Cli;
+try {
+  initCli = new Cli();
+} catch (error) {
+  LoggerService.writeNativeErrorLog(error);
+}
+export const cli : Cli = initCli;
 
-export const cli : Cli = new Cli();
+/// Welcome
+LoggerService.writeInfoLog('Exemple gclio de logs')
 
 LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'gio' : ${cli.gnuOptions.argv["gio"]}`);
 LoggerService.writeDebugLog(`{[ index.ts ]} --- valeur yargs de l'option YARGS 'api-home' : ${cli.gnuOptions.argv["api-home"]}`);
@@ -59,3 +59,9 @@ process.argv = cli.gnuOptions.argv;
 LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gio' : ${process.argv["gio"]}`);
 LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'api-home' : ${process.argv["api-home"]}`);
 LoggerService.writeDebugLog(`{[ index.ts / process.argv ]} --- valeur yargs de l'option YARGS 'gw-home' : ${process.argv["gw-home"]}`);
+
+LoggerService.writeErrorLog(`Un exemple d'erreur logguée`);
+
+let testerror = new Error(" Error which should be logged by winston and formatted by logform");
+LoggerService.writeNativeErrorLog(testerror);
+throw testerror;
